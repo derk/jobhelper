@@ -1,0 +1,23 @@
+<ion-view view-title="用户登录" ng-style="{background:'#099835'}">
+	<ion-content class="padding">
+		<form novalidate class="list list-inset">
+			<label class="item item-input">
+				<input type="tel" placeholder="手机号码" ng-model="loginuser.phonenum" required>
+			</label>
+			<label class="item item-input">
+				<input type="password" placeholder="密码" ng-model="loginuser.password" required ng-minlength=6 ng-maxlength=20>
+			</label>
+		</form>
+		<div class="padding">
+			<button class="button button-block button-balanced" ng-click="login()">
+				登录
+			</button>
+			<p>
+				还没帐号?
+			</p>
+			<a class="button button-outline button-block button-balanced" href="#/tab/register">
+				注册
+			</a>
+		</div>
+	</ion-content>
+</ion-view>
