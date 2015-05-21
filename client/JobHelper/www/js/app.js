@@ -1,4 +1,9 @@
-angular.module('myApp', ['ionic', 'myApp.controllers'])
+// Ionic Starter App
+
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 
 .run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {
@@ -12,7 +17,6 @@ angular.module('myApp', ['ionic', 'myApp.controllers'])
 		}
 	});
 })
-
 .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 	//改变android的一些默认行为
 	$ionicConfigProvider.platform.android.tabs.style('stardard');
@@ -24,56 +28,104 @@ angular.module('myApp', ['ionic', 'myApp.controllers'])
 
 
 	$stateProvider
-		.state('tabs', {
-			url: "/tab",
+		.state('sidemenu', {
+			url: "/home",
 			abstract: true,
-			templateUrl: "templates/tabs.html"
+			templateUrl: "templates/sidemenu.html",
 		})
-		.state('tabs.searchjob', {
+		.state('sidemenu.searchjob', {
 			url: "/searchjob",
 			views: {
-				'SearchJob-tab': {
+				'menuContent': {
 					templateUrl: "templates/searchjob.html",
+					controller:"SearchJobCtrl"
 				}
 			}
 		})
-		.state('tabs.selectjob', {
-			url: "/selectjob",
-			views: {
-				'SearchJob-tab': {
-					templateUrl: "templates/selectjob.html",
-					controller:'SelectJobCtrl'
+		.state('sidemenu.selectcity',{
+			url:"/selectcity",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/selectcity.html",
+					controller:"SelectCityCtrl"
 				}
 			}
 		})
-		.state('tabs.personinfo', {
-			url: "/personinfo",
-			views: {
-				'PersonInfo-tab': {
-					templateUrl: "templates/personinfo.html",
-					controller:'UserCtrl'
+		.state('sidemenu.selectjob1',{
+			url:"/selectjob1",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/selectjob1.html",
+					controller:"SelectJob1Ctrl"
 				}
 			}
 		})
-		.state('tabs.login', {
-			url: "/login",
-			views: {
-				'PersonInfo-tab': {
-					templateUrl: "templates/login.html",
-					controller:'LoginCtrl'
+		.state('sidemenu.selectjob2',{
+			url:"/selectjob2",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/selectjob2.html",
+					controller:"SelectJob2Ctrl"
 				}
 			}
 		})
-		.state('tabs.register', {
-			url: "/register",
-			views: {
-				'PersonInfo-tab': {
-					templateUrl: "templates/register.html",
-					controller:'RegisterCtrl'
+		.state('sidemenu.listjob',{
+			url:"/listjob",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/listjob.html",
+					controller:"ListJobCtrl"
 				}
 			}
-		});
+		})
+		.state('sidemenu.jobdetail',{
+			url:"/jobdetail",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/jobdetail.html",
+					controller:"JobDetailCtrl"
+				}
+			}
+		})
+		.state('sidemenu.companydetail',{
+			url:"/companydetail",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/companydetail.html",
+					controller:"CompanyDetailCtrl"
+				}
+			}
+		})
+		.state('sidemenu.login',{
+			url:"/login",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/login.html",
+					controller:"LoginCtrl"
+				}
+			}
+		})
+		.state('sidemenu.register1',{
+			url:"/register1",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/register1.html",
+					controller:"Register1Ctrl"
+				}
+			}
+		})
+		.state('sidemenu.register2',{
+			url:"/register2",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/register2.html",
+					controller:"Register2Ctrl"
+				}
+			}
+		})
+		
+		
 
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise("/tab/searchjob");
+	$urlRouterProvider.otherwise("/home/searchjob");
 });

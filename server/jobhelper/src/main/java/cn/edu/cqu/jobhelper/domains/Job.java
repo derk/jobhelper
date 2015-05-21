@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="jobs")
@@ -89,8 +90,16 @@ public class Job {
 	
 	//不用存入数据库的属性
 	//获得客户端请求后再设置这些
+	@Transient
 	private String jobDescribe;
+	@Transient
 	private String companyDescribe;
+	@Transient
+	private String companyImgSrc;
+	@Transient
+	private String companyDetailName;
+	@Transient
+	private String jobDate;
 	public Job() {
 		super();
 	}
@@ -209,6 +218,47 @@ public class Job {
 	public void setCompanyDescribe(String companyDescribe) {
 		this.companyDescribe = companyDescribe;
 	}
+	
+	public double getCompanyLat() {
+		return companyLat;
+	}
+	public void setCompanyLat(double companyLat) {
+		this.companyLat = companyLat;
+	}
+	public double getCompanyLng() {
+		return companyLng;
+	}
+	public void setCompanyLng(double companyLng) {
+		this.companyLng = companyLng;
+	}
+	public String getJobDate() {
+		return jobDate;
+	}
+	public void setJobDate(String jobDate) {
+		this.jobDate = jobDate;
+	}
+	
+
+	public String getCompanyImgSrc() {
+		return companyImgSrc;
+	}
+
+
+	public void setCompanyImgSrc(String companyImgSrc) {
+		this.companyImgSrc = companyImgSrc;
+	}
+
+
+	public String getCompanyDetailName() {
+		return companyDetailName;
+	}
+
+
+	public void setCompanyDetailName(String companyDetailName) {
+		this.companyDetailName = companyDetailName;
+	}
+
+
 	public String toString(){
 		String str1="工作类别:"+jobCategory;
 		String str2="工作名称:"+jobName;

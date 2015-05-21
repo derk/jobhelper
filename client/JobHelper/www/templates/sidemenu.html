@@ -1,0 +1,38 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-stable">
+			<ion-nav-back-button>
+			</ion-nav-back-button>
+
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+				</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+
+	<ion-side-menu side="left">
+		<ion-content>
+			<div class="list">
+				<a class="item button-item item-icon-left userImg vertical-mg" menu-close href="#/home/login"><i class="icon"><img src="../img/Pird.jpg"></i>
+					<h2 class="name">请登录</h2>
+				</a>
+				<a class="item button-item item-icon-left" menu-close href=""> 
+					<i class="icon ion-person"></i> 我的信息
+				</a>
+				<a class="item button-item item-icon-left" menu-close href="#/home/searchjob">
+					<i class="icon ion-ios-search"></i> 工作搜索
+				</a>
+				<a class="item button-item item-icon-left" menu-close href="">
+					<i class="icon ion-ios-heart"></i> 我的收藏
+				</a>
+				<a class="item button-item item-icon-left" href="">
+					<i class="icon ion-gear-b"></i> 设置
+				</a>
+			</div>
+		</ion-content>
+	</ion-side-menu>
+
+</ion-side-menus>

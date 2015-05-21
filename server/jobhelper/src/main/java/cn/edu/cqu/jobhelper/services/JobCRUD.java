@@ -10,5 +10,6 @@ public interface JobCRUD {
 	public void add(Job job);
 	public void edit(Long id,Job job);
 	public List<Job> getAll();
+	public List<Job> getListBy(String jobCity,String jobCate);
 	public void deleteById(Long id);
 }

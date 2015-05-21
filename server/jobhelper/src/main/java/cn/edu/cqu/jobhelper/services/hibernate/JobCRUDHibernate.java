@@ -45,7 +45,19 @@ public class JobCRUDHibernate implements JobCRUD{
 	@Override
 	@Transactional
 	public void edit(Long id, Job job) {
-		
+		Job j = this.getById(id);
+		j.setJobCategory(job.getJobCategory());
+		j.setJobName(job.getJobName());
+		j.setJobId(job.getJobId());
+		j.setJobCity(job.getJobCity());
+		j.setJobSalary(job.getJobSalary());
+		j.setJobExperience(job.getJobExperience());
+		j.setJobEducation(job.getJobEducation());
+		j.setJobFormality(job.getJobFormality());
+		j.setCompanyName(job.getCompanyName());
+		j.setCompanyId(job.getCompanyId());
+		j.setCompanyAddress(job.getCompanyAddress());
+		ht.update(j);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -60,6 +72,21 @@ public class JobCRUDHibernate implements JobCRUD{
 	public void deleteById(Long id) {
 		Job j = this.getById(id);
 		ht.delete(j);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Job> getListBy(String jobCity, String jobCate) {
+		List<Job> jobs=null;
+		if(jobCity.equals("") && jobCate.equals(""))
+			jobs = this.getAll();
+		else if(!jobCity.equals("") && jobCate.equals(""))
+			jobs = (List<Job>)ht.find("from Job where jobCity=?", jobCity);
+		else if(jobCity.equals("") && !jobCate.equals(""))
+			jobs = (List<Job>)ht.find("from Job where jobCategory=?", jobCate);
+		else
+			jobs = (List<Job>)ht.find("from Job where jobCity=? and jobCategory=?", jobCity,jobCate);
+		return jobs;
 	}
 
 }

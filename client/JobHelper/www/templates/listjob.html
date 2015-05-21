@@ -1,0 +1,11 @@
+<ion-view view-title="工作列表">
+	<ion-content>
+		<ion-item class="item-icon-right" ng-repeat="job in listArray" ng-click="showJobDetail(job)">
+      		<h2 ng-bind="job.jobName"></h2>
+      		<p>{{job.jobCity}}&nbsp;&nbsp;{{job.companyName}}</p>
+      		<p>月薪:{{job.jobSalary}}&nbsp;&nbsp;工作经验:{{job.jobExperience}}&nbsp;&nbsp;
+      			最低学历:{{job.jobEducation}}&nbsp;&nbsp;工作性质:{{job.jobFormality}}</p>
+      			<i class="icon ion-ios-arrow-right"></i>
+		</ion-item>
+	</ion-content>
+</ion-view>

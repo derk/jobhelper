@@ -1,0 +1,61 @@
+<ion-view view-title="职位类别">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-stable" ng-click="toggleCateShow(0)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(0) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;技术
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in jishu" ng-show="isCateShown(0)" ng-click="chooseCate(0,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(1)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(1) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;产品
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in chanpin" ng-show="isCateShown(1)" ng-click="chooseCate(1,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(2)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(2) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;设计
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in sheji" ng-show="isCateShown(2)" ng-click="chooseCate(2,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(3)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(3) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;运营
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in yunying" ng-show="isCateShown(3)" ng-click="chooseCate(3,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(4)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(4) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;市场与销售
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in shichangyuxiaoshou" ng-show="isCateShown(4)" ng-click="chooseCate(4,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(5)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(5) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;职能
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in zhineng" ng-show="isCateShown(5)" ng-click="chooseCate(5,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+			
+			<ion-item class="item-stable" ng-click="toggleCateShow(6)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCateShown(6) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i>&nbsp;金融
+			</ion-item>
+			<ion-item class="item-accordion item-icon-right" ng-repeat="cate in jinrong" ng-show="isCateShown(6)" ng-click="chooseCate(6,cate)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{cate}}
+				<i class="icon ion-ios-arrow-right"></i>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

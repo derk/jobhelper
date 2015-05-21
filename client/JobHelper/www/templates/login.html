@@ -1,23 +1,25 @@
-<ion-view view-title="用户登录" ng-style="{background:'#099835'}">
-	<ion-content class="padding">
+<ion-view view-title="登录">
+	<ion-content>
 		<form novalidate class="list list-inset">
 			<label class="item item-input">
-				<input type="tel" placeholder="手机号码" ng-model="loginuser.phonenum" required>
+				<i class="icon ion-ios-person placeholder-icon"></i>
+				<input type="text" ng-model="user.phonenum" placeholder="请输入您的手机号">
 			</label>
 			<label class="item item-input">
-				<input type="password" placeholder="密码" ng-model="loginuser.password" required ng-minlength=6 ng-maxlength=20>
+				<i class="icon ion-ios-locked placeholder-icon"></i>
+				<input type="password" ng-model="user.password" placeholder="请输入您的密码">
 			</label>
 		</form>
-		<div class="padding">
-			<button class="button button-block button-balanced" ng-click="login()">
-				登录
-			</button>
-			<p>
-				还没帐号?
-			</p>
-			<a class="button button-outline button-block button-balanced" href="#/tab/register">
-				注册
-			</a>
+		<div class="list padding">
+			<button class="button button-block button-balanced" ng-click="login()">登录</button>
+			<div class="padding">
+				<span ng-style="{float:'left'}">
+            		<a href="" class="login">无法登录？</a>
+         		</span>
+				<span ng-style="{float:'right'}">
+            		<a href="#/home/register1" class="login">新用户</a>
+         		</span>
+			</div>
 		</div>
 	</ion-content>
 </ion-view>

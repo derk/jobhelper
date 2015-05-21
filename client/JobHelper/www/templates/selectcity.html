@@ -1,0 +1,58 @@
+<ion-view view-title="城市选择">
+	<ion-content>
+		<ion-list>
+			<ion-item class="item-positive" style="margin:10px 0 5px">
+				常用选择
+			</ion-item>
+			<div class="row padding">
+				<button class="button button-balanced col" ng-click="chooseCity(city)" style="margin-right:4px;height:25px" ng-repeat="city in hotCityRow1">
+					{{city}}
+				</button>
+			</div>
+			<div class="row padding">
+				<button class="button button-balanced col" ng-click="chooseCity(city)" style="margin-right:5px;height:25px" ng-repeat="city in hotCityRow2">
+					{{city}}
+				</button>
+			</div>
+			<ion-item class="item-positive" style="margin:10px 0 5px">
+				其他
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(0)" style="margin:10px 0 5px">
+				<i class="icon" ng-class="isCitiesShown(0) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> ABCDEF
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in ABCDEF" ng-show="isCitiesShown(0)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(1)" style="margin-bottom:5px">
+				<i class="icon" ng-class="isCitiesShown(1) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> GHIJ
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in GHIJ" ng-show="isCitiesShown(1)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(2)" style="margin-bottom:5px">
+				<i class="icon" ng-class="isCitiesShown(2) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> KLMN
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in KLMN" ng-show="isCitiesShown(2)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(3)" style="margin-bottom:5px">
+				<i class="icon" ng-class="isCitiesShown(3) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> OPQR
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in OPQR" ng-show="isCitiesShown(3)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(4)" style="margin-bottom:5px">
+				<i class="icon" ng-class="isCitiesShown(4) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> STUV
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in STUV" ng-show="isCitiesShown(4)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+			<ion-item class="item-stable" ng-click="toggleCityShow(5)" style="margin-bottom:5px">
+				<i class="icon" ng-class="isCitiesShown(5) ? 'ion-ios-arrow-up' : 'ion-ios-arrow-down'"></i> WXYZ
+			</ion-item>
+			<ion-item class="item-accordion" ng-repeat="city in WXYZ" ng-show="isCitiesShown(5)" ng-click="chooseCity(city)">
+				&nbsp;&nbsp;&nbsp;&nbsp;{{city}}
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

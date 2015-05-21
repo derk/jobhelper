@@ -1,1 +1,22 @@
 /* Empty. Add your own CSS if you like */
+
+/*sidemenu*/
+.vertical-mg{
+	margin:0px 0 19px;
+}
+.userImg .name{
+	line-height: 88px;
+	float: left;
+	margin-left: 51px;
+}
+.userImg img{
+	width:70px;
+	border-radius:50px;
+	border:2px solid #eee;
+}
+
+/*登录*/
+a.login{
+	text-decoration: none;
+	color: #6d6d72;
+}

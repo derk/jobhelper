@@ -1,0 +1,22 @@
+<ion-view view-title="设置密码">
+	<ion-content>
+		<div class="padding">设置用户名和密码。</div>
+		<form novalidate name="register2Form" class="list" ng-submit="register()">
+			<label class="item item-input item-stacked-label">
+		    	<span class="input-label">用户名</span>
+		    	<input type="text" name="username" ng-model="user.username" placeholder="请输入用户名" required>
+		  	</label>
+		  	<label class="item item-input item-stacked-label">
+		    	<span class="input-label">密码</span>
+		    	<input type="password" name="password" ng-model="user.password" placeholder="请设置至少6位密码" required>
+		  	</label>
+		  	<label class="item item-input item-stacked-label">
+		    	<span class="input-label">确认密码</span>
+		    	<input type="password" name="password2" ng-model="user.password2" placeholder="请再次填写" required>
+		  	</label>
+		  	<div class="padding">
+		  		<button type="submit" ng-disabled="register2Form.$invalid" class="button button-block button-balanced">注册</button>
+		  	</div>
+		</form>
+	</ion-content>
+</ion-view>
