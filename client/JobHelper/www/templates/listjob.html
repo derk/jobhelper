@@ -9,8 +9,7 @@
 					<i class="icon ion-ios-arrow-right"></i>
 			</ion-item>
 			<ion-item>
-				<button class="button button-block button-calm" ng-click="getMoreJobList()">
-					加载更多
+				<button class="button button-block button-calm" ng-bind="buttonGetMore.text" ng-disabled="buttonGetMore.disable" ng-click="getMoreJobList()">
 				</button>
 			</ion-item>
 		</ion-list>
