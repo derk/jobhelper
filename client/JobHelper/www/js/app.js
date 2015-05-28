@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers','ngCordova','baiduMap'])
 
 .run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {
@@ -21,10 +21,11 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 	//改变android的一些默认行为
 	$ionicConfigProvider.platform.android.tabs.style('stardard');
 	$ionicConfigProvider.platform.android.tabs.position('bottom');
-	$ionicConfigProvider.platform.android.views.transition('ios');
 	$ionicConfigProvider.platform.android.navBar.alignTitle('center');
 	$ionicConfigProvider.platform.android.navBar.positionPrimaryButtons('left');
 	$ionicConfigProvider.platform.android.navBar.positionSecondaryButtons('right');
+	//改变view cache的属性
+	$ionicConfigProvider.views.maxCache(3);
 
 
 	$stateProvider
@@ -93,6 +94,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 				'menuContent':{
 					templateUrl:"templates/companydetail.html",
 					controller:"CompanyDetailCtrl"
+				}
+			}
+		})
+		.state('sidemenu.showmap',{
+			url:"/showmap",
+			views:{
+				'menuContent':{
+					templateUrl:"templates/showmap.html",
+					controller:"ShowMapCtrl"
 				}
 			}
 		})

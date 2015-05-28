@@ -1,27 +1,24 @@
-<ion-view view-title="工作名称:{{jobdetail.jobName}}">
-	<ion-content class="padding">
+<ion-view view-title="{{jobdetail.companyName}}:{{jobdetail.jobName}}">
+	<ion-content>
 		<ion-list>
-			<ion-item class="item item-button-right">
-				<h1 class="calm" ng-bind="jobdetail.jobName"></h1>
+			<ion-item class="item">
+				<h1 class="calm" ng-bind="jobdetail.jobName"></h2>
+				<p>{{jobdetail.companyName}}</p>
 				<p>工作城市:{{jobdetail.jobCity}}</p>
+				<p>月薪:{{jobdetail.jobSalary}}&nbsp;&nbsp;工作经验:{{jobdetail.jobExperience}}</p>
+				<p>最低学历:{{jobdetail.jobEducation}}&nbsp;&nbsp;工作性质:{{jobdetail.jobFormality}}</p>
+				<p>{{jobdetail.jobDate}}</p>
+				<br />
 				<p>
-					月薪:{{jobdetail.jobSalary}}&nbsp;&nbsp;工作经验要求:{{jobdetail.jobExperience}}&nbsp;&nbsp;
-					最低学历:{{jobdetail.jobEducation}}&nbsp;&nbsp;工作性质:{{jobdetail.jobFormality}}
+					<button class="button icon-right ion-android-arrow-forward button-positive" ng-click="showCompanyDetail()">
+						查看公司介绍
+					</button>
 				</p>
-				<p>发布时间:{{jobdetail.jobDate}}</p>
-				<br />
-				<br />
-				<h2>{{jobdetail.companyName}}</h2>
-				<h3>公司地址:{{jobdetail.companyAddress}}</h3>
-				<button class="button button-positive" ng-click="showCompanyDetail()">
-					查看公司介绍
-					<i class="icon ion-android-arrow-forward"></i>
-				</button>
-				
 			</ion-item>
-			<ion-item>
-				<p ng-bind-html="jobdetail.jobDescribe"></p>
-			</ion-item>
+			<div class="padding">
+				<h4 class="calm">职位描述</h4>
+				<p style="color:#5C5C5C" ng-bind-html="jobdetail.jobDescribe"></p>
+			</div>
 		</ion-list>
 		
 		

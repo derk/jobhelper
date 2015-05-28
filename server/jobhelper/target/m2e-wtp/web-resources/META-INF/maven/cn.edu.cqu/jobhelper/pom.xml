@@ -9,7 +9,7 @@
 	<properties>
 		<java-version>1.7</java-version>
 		<org.springframework-version>4.1.0.RELEASE</org.springframework-version>
-		<org.hibernate-version>4.3.6.Final</org.hibernate-version>
+		<org.hibernate-version>4.3.9.Final</org.hibernate-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<org.json-version>20140107</org.json-version>
@@ -46,6 +46,25 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.3.6</version>
 		</dependency>
+		<!-- apache lucene -->
+		<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>4.10.3</version>
+		</dependency>
+		<!-- apache solr -->
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-core</artifactId>
+			<version>4.10.3</version>
+		</dependency>
+		<!-- apache solrj -->
+		<dependency>
+			<groupId>org.apache.solr</groupId>
+			<artifactId>solr-solrj</artifactId>
+			<version>4.10.3</version>
+		</dependency>
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -74,16 +93,29 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		<!-- hibernate -->
+		<!-- hibernate ORM-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${org.hibernate-version}</version>
 		</dependency>
+		<!-- Hibernate JPA Support -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${org.hibernate-version}</version>
+		</dependency>
+		<!-- Hibernate Search Engine -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-engine</artifactId>
+			<version>5.2.0.Final</version>
+		</dependency>
+		<!-- Hibernate Search ORM -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-orm</artifactId>
+			<version>5.2.0.Final</version>
 		</dependency>
 		<!-- Mysql -->
 		<dependency>

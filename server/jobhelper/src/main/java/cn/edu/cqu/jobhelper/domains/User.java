@@ -23,12 +23,12 @@ public class User {
 	/**
 	 * 登录邮箱（唯一）
 	 */
-	@Column(length=50,nullable=false,unique=true)
+	@Column(length=60,nullable=false,unique=true)
 	private String phonenum;
 	/**
 	 * 登录密码
 	 */
-	@Column(length=20,nullable=false,unique=false)
+	@Column(length=60,nullable=false,unique=false)
 	private String password;
 	public Long getId() {
 		return id;

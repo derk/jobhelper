@@ -1,19 +1,19 @@
 <ion-view view-title="公司介绍">
-	<ion-content class="padding">
+	<ion-content>
 		<div class="list">
 			<div class="item item-thumbnail-left">
-				<img src="{{jobdetail.companyImgSrc}}">			
-				<h1 class="calm" ng-bind="jobdetail.companyName"></h1>
+				<img src="{{jobdetail.companyImgSrc}}">
+				<h1 style="font-size:23px" class="calm" ng-bind="jobdetail.companyName"></h1>
 				<h2 ng-bind="jobdetail.companyDetailName"></h2>
 				<p>公司主页:&nbsp;{{jobdetail.companyPage}}</p>
-				<p>公司地址:&nbsp;{{jobdetail.companyAddress}}</p>
 			</div>
-			<h3 class="calm">公司介绍</h3>
-			<div style="margin-top:20px;overflow:auto;word-break:break-all;word-wrap:break-word;">
+			<a class="item item-icon-left" ng-click="showMap()">
+				<i class="assertive icon ion-ios-location"></i>
+				<span style="font-size:14px" class="positive">公司地址:&nbsp;{{jobdetail.companyAddress}}</span>
+			</a>
+			<h3 class="calm padding-horizontal">公司介绍</h3>
+			<div class="padding-horizontal" style="margin-top:18px;word-break:break-all;word-wrap:break-word;">
 				<p ng-bind="jobdetail.companyDescribe" style="word-break:break-all;word-wrap:break-word;"></p>
-				<h4 class="positive">公司地理位置</h4>
-				<p>来自百度地图</p>
-				<img src="{{mapSrc.value}}">
 			</div>
 		</div>
 	</ion-content>

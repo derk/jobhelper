@@ -17,7 +17,11 @@
   "cordovaPlugins": [
     "org.apache.cordova.device",
     "org.apache.cordova.console",
-    "com.ionic.keyboard"
+    "com.ionic.keyboard",
+    {
+      "id": "cordova-plugin-crosswalk-webview",
+      "locator": "./engine/cordova-crosswalk-engine-c0.7.1"
+    }
   ],
   "cordovaPlatforms": [
     "android"

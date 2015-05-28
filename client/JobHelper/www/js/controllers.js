@@ -1,9 +1,9 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter.controllers', ['ngCordova','baiduMap'])
 
 //全局变量
 .factory('ServerIp', function () {
 		return {
-			value:"http://172.22.73.71:8080/cqu" //"http://172.24.8.178:8080/cqu"
+			value:"http://172.24.8.178:8080/cqu" //"http://172.24.8.178:8080/cqu"
 		}
 	})
 //用户
@@ -43,7 +43,7 @@ angular.module('starter.controllers', ['ngCordova'])
 		array:[{},{},{}]
 	}
 })
-.controller('SearchJobCtrl', function ($scope,$http, ServerIp,jobSelect,jobList,globalUser) {
+.controller('SearchJobCtrl', function ($scope,$http,$ionicPlatform,$cordovaToast,ServerIp,jobSelect,jobList,globalUser) {
 //	$scope.user = globalUser;
 //	console.log("Loginuser.username:"+$scope.user.username);
 	
@@ -60,12 +60,14 @@ angular.module('starter.controllers', ['ngCordova'])
 			jobList.array = data;
 			window.location.href="#/home/listjob";
 		}).error(function(data){
-			
+			$ionicPlatform.ready(function () {
+				$cordovaToast.showShortBottom('连接服务器失败');
+			});
 		});
 	};
 })
 
-.controller('SelectCityCtrl', function ($scope, jobSelect) {
+.controller('SelectCityCtrl', function ($scope,$ionicHistory,jobSelect) {
 	$scope.hotCity = [
 		'全国', '北京', '上海', '广州', '深圳', '成都', '重庆', '杭州', '武汉', '南京'
 	];
@@ -112,6 +114,11 @@ angular.module('starter.controllers', ['ngCordova'])
 	$scope.chooseCity = function (city) {
 		jobSelect.city = city;
 		console.log("SelectCity:" + jobSelect.city);
+//		$ionicHistory.clearCache();
+//		$ionicHistory.clearHistory();
+		$ionicHistory.nextViewOptions({
+			disableBack: true
+		});
 		window.location.href = "#/home/searchjob";
 	};
 })
@@ -158,7 +165,7 @@ angular.module('starter.controllers', ['ngCordova'])
 	};
 })
 
-.controller('SelectJob2Ctrl', function ($scope, jobSelect, jobSelectHelper) {
+.controller('SelectJob2Ctrl', function ($scope, $ionicHistory, jobSelect, jobSelectHelper) {
 	$scope.jishu_houduankaifa = [
 		'Java', 'Python', 'PHP', '.NET', 'C/C++', 'VB', 'Delphi', 'Perl', 'Ruby',
 		'Hadoop', 'Node.js', '数据挖掘', '自然语言处理', '搜索算法', '精准推荐', '全栈工程师',
@@ -374,13 +381,42 @@ angular.module('starter.controllers', ['ngCordova'])
 	$scope.chooseSubCate = function (subCate) {
 		console.log("subCate:" + subCate);
 		jobSelect.subCate = subCate;
+//		$ionicHistory.clearCache();
+//		$ionicHistory.clearHistory();
+		$ionicHistory.nextViewOptions({
+			disableBack: true
+		});
 		window.location.href = "#/home/searchjob";
 	};
 })
 
-.controller('ListJobCtrl', function($scope,$http,$ionicPlatform,$sce,$cordovaToast,jobSelect,jobList,jobDetail,ServerIp){
+.controller('ListJobCtrl', function($scope,$http,$ionicPlatform,$cordovaToast,jobList,jobDetail,ServerIp){
 	$scope.listArray = jobList.array;
 	console.log("listArray.length:"+$scope.listArray.length);
+	$scope.buttonGetMore = {
+		disable:false,
+		text:'加载更多'
+	};
+	$scope.getMoreJobList = function(){
+		$http({
+			method:'GET',
+			url:ServerIp.value+'/job/getMoreJobList.json',
+		}).success(function(data){
+			if(data==undefined){
+				//error
+				$scope.buttonGetMore.disable = true;
+				$scope.buttonGetMore.text = '显示完毕';
+			}
+			else{
+				$scope.listArray = $scope.listArray.concat(data);
+				console.log("长度:"+$scope.listArray.length);
+			}
+		}).error(function(data){
+			$ionicPlatform.ready(function () {
+				$cordovaToast.showShortBottom('连接服务器失败');
+			});
+		});	
+	};
 	$scope.showJobDetail = function(job){
 		//console.log(jobDetail.jobDate);
 		$http({
@@ -407,7 +443,7 @@ angular.module('starter.controllers', ['ngCordova'])
 	};
 })
 		
-.controller('JobDetailCtrl', function($scope,$http,$ionicPlatform,$sce,$cordovaToast,jobSelect,jobList,jobDetail,ServerIp){
+.controller('JobDetailCtrl', function($scope,$http,$ionicPlatform,$cordovaToast,jobDetail,ServerIp){
 	$scope.jobdetail = jobDetail.object;
 	//console.log("详细信息界面:"+jobDetail.object.jobDescribe);
 	$scope.showCompanyDetail = function(){
@@ -428,17 +464,50 @@ angular.module('starter.controllers', ['ngCordova'])
 		})
 	};
 })
-.controller('CompanyDetailCtrl', function($scope,$http,$ionicPlatform,$sce,$cordovaToast,jobSelect,jobList,jobDetail,ServerIp){
+
+.controller('CompanyDetailCtrl', function($scope,$http,$ionicPlatform,jobDetail,ServerIp){
 	$scope.jobdetail = jobDetail.object;
 	$scope.mapSrc = {
 		value:""
 	};
 	$scope.mapSrc.value = "http://api.map.baidu.com/staticimage?center="+$scope.jobdetail.companyLng+","+$scope.jobdetail.companyLat+
 			"&width=450&height=500&zoom=17";
-	//$scope.mapSrc.value = "http://api.map.baidu.com/staticimage?center=116.403874,39.914888&width=300&height=200&zoom=11";
-	//console.log("公司全名:"+jobDetail.object.companyDescribe);
+	$scope.showMap = function(){
+		console.log("公司地址:"+jobDetail.object.companyAddress);
+		window.location.href="#/home/showmap";
+	};
 })
-			
+
+.controller('ShowMapCtrl', function($scope,$http,$ionicPlatform,$cordovaToast,jobDetail,ServerIp){
+	var longitude = jobDetail.object.companyLng;
+	var latitude = jobDetail.object.companyLat; 
+	var city = jobDetail.object.jobCity;
+	var title = jobDetail.object.companyName;
+	var content1 = jobDetail.object.companyDetailName;
+	var content2 = jobDetail.object.companyAddress;
+	var content = content1 + '。地址: '+content2;
+//	$ionicPlatform.ready(function () {
+//		$cordovaToast.showShortCenter(content);
+//	});
+	$scope.mapOptions = {
+		center:{
+			longitude:longitude,
+			latitude:latitude
+		},
+		zoom:15,
+		city:city,
+		markers:[{
+			longitude: longitude,
+			latitude: latitude,
+			//icon: 'img/mappiont.png',
+			width: 49,
+			height: 60,
+			title: title,
+			content: content
+		}]
+	};
+})
+
 .controller('Register1Ctrl', function ($scope, $http, $timeout, $ionicPlatform ,$cordovaSms, $cordovaToast, ServerIp, globalUser) {
 	$scope.user = {
 		phonenum: ""
@@ -459,7 +528,7 @@ angular.module('starter.controllers', ['ngCordova'])
 			});
 			return;
 		}
-		console.log("发送验证码")
+		console.log("发送验证码");
 		$http({
 			method: 'POST',
 			url: ServerIp.value + '/user/sendSMS.json',

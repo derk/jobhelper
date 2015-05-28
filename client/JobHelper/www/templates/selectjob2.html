@@ -1,10 +1,12 @@
 <ion-view view-title="{{selectHelper.cate}}">
 	<ion-content>
-		<ion-item class="item-positive" style="margin:10px 0 10px">
-			请选择一项:
-		</ion-item>
-		<ion-item class="item-stable" ng-repeat="subCate in selectHelper.list" style="margin-bottom:5px" ng-click="chooseSubCate(subCate)">
-			<i class="icon ion-ios-circle-filled"></i>&nbsp;&nbsp;{{subCate}}
-		</ion-item>
+		<ion-list>
+			<ion-item class="item-positive" style="margin:10px 0 10px">
+				请选择一项:
+			</ion-item>
+			<ion-item class="item-stable" ng-repeat="subCate in selectHelper.list" style="margin-bottom:5px" ng-click="chooseSubCate(subCate)">
+				<i class="icon ion-ios-circle-filled"></i>&nbsp;&nbsp;{{subCate}}
+			</ion-item>
+		</ion-list>
 	</ion-content>
 </ion-view>

@@ -42,6 +42,11 @@
                 <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
+                <!-- Hibernate Search -->
+                <beans:prop key="hibernate.search.default.directory_provider">filesystem</beans:prop>
+                <beans:prop key="hibernate.search.default.indexBase">/home/pirdboy/indexes</beans:prop>
+                <beans:prop key="hibernate.search.lucene_version">LUCENE_CURRENT</beans:prop>
+                <beans:prop key="hibernate.search.analyzer">org.apache.lucene.analysis.cjk.CJKAnalyzer</beans:prop>
             </beans:props>
 		</beans:property>
 	</beans:bean>

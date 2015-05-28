@@ -74,19 +74,29 @@ public class JobCRUDHibernate implements JobCRUD{
 		ht.delete(j);
 	}
 	
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<Job> getListBy(String jobCity, String jobCate) {
+//		List<Job> jobs=null;
+//		if(jobCity.equals("") && jobCate.equals(""))
+//			jobs = this.getAll();
+//		else if(!jobCity.equals("") && jobCate.equals(""))
+//			jobs = (List<Job>)ht.find("from Job where jobCity=?", jobCity);
+//		else if(jobCity.equals("") && !jobCate.equals(""))
+//			jobs = (List<Job>)ht.find("from Job where jobCategory=?", jobCate);
+//		else
+//			jobs = (List<Job>)ht.find("from Job where jobCity=? and jobCategory=?", jobCity,jobCate);
+//		return jobs;
+//	}
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Job> getListBy(String jobCity, String jobCate) {
-		List<Job> jobs=null;
-		if(jobCity.equals("") && jobCate.equals(""))
-			jobs = this.getAll();
-		else if(!jobCity.equals("") && jobCate.equals(""))
-			jobs = (List<Job>)ht.find("from Job where jobCity=?", jobCity);
-		else if(jobCity.equals("") && !jobCate.equals(""))
-			jobs = (List<Job>)ht.find("from Job where jobCategory=?", jobCate);
-		else
-			jobs = (List<Job>)ht.find("from Job where jobCity=? and jobCategory=?", jobCity,jobCate);
-		return jobs;
+	public List<Job> getBySql(String sql,Object... args) {
+		//List<Job> jobs = ht.find(queryString, values)
+		List<Job> jobs = (List<Job>) ht.find(sql, args);
+		if(jobs.size()>0){
+			return jobs;
+		}
+		return null;
 	}
 
 }

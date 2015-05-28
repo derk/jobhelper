@@ -1,11 +1,11 @@
 <ion-view view-title="城市选择">
 	<ion-content>
 		<ion-list>
-			<ion-item class="item-positive" style="margin:10px 0 5px">
+			<ion-item class="item-calm" style="margin:10px 0 5px">
 				常用选择
 			</ion-item>
 			<div class="row padding">
-				<button class="button button-balanced col" ng-click="chooseCity(city)" style="margin-right:4px;height:25px" ng-repeat="city in hotCityRow1">
+				<button class="button button-balanced col" ng-click="chooseCity(city)" style="margin-right:5px;height:25px" ng-repeat="city in hotCityRow1">
 					{{city}}
 				</button>
 			</div>
@@ -14,7 +14,7 @@
 					{{city}}
 				</button>
 			</div>
-			<ion-item class="item-positive" style="margin:10px 0 5px">
+			<ion-item class="item-calm" style="margin:10px 0 5px">
 				其他
 			</ion-item>
 			<ion-item class="item-stable" ng-click="toggleCityShow(0)" style="margin:10px 0 5px">
